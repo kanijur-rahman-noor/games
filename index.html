@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Celestial Games Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+      display: none; /* hidden by default until verified */
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    a {
+      text-decoration: none;
+      color: #0070f3;
+      font-weight: bold;
+      display: block;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 Celestial Games Collection</h1>
+  <div class="grid" id="gameGrid">
+    <div class="card" data-url="inlogic-galaxyshooter/gamefiles/index.html"><a href="inlogic-galaxyshooter/gamefiles/index.html">Galaxy Shooter</a></div>
+    <div class="card" data-url="SpotTheDiff/SpotTheDifference_GameFiles/index.html"><a href="SpotTheDiff/SpotTheDifference_GameFiles/index.html">Spot The Difference</a></div>
+    <div class="card" data-url="2048/2048_GameFiles/index.html"><a href="2048/2048_GameFiles/index.html">2048</a></div>
+    <div class="card" data-url="FruitNinja/FruitNinja_GameFiles/index.html"><a href="FruitNinja/FruitNinja_GameFiles/index.html">Fruit Ninja</a></div>
+    <div class="card" data-url="Halloweenbubblebash/index.html"><a href="Halloweenbubblebash/index.html">Halloween Bubble Bash</a></div>
+    <div class="card" data-url="greatairbattle/index.html"><a href="greatairbattle/index.html">Great Air Battle</a></div>
+    <div class="card" data-url="miniracer/index.html"><a href="miniracer/index.html">Mini Racer</a></div>
+    <div class="card" data-url="inlogic-clashofwarriors/gamefiles/index.html"><a href="inlogic-clashofwarriors/gamefiles/index.html">Clash of Warriors</a></div>
+    <div class="card" data-url="BrickBreaker/BrickBreaker_GameFiles/index.html"><a href="BrickBreaker/BrickBreaker_GameFiles/index.html">Brick Breaker</a></div>
+    <div class="card" data-url="monster_truck_rider/index.html"><a href="monster_truck_rider/index.html">Monster Truck Rider</a></div>
+    <div class="card" data-url="seabattle/index.html"><a href="seabattle/index.html">Sea Battle</a></div>
+    <div class="card" data-url="ZikZak/ZikZak_GameFiles/index.html"><a href="ZikZak/ZikZak_GameFiles/index.html">ZikZak</a></div>
+    <div class="card" data-url="ColorSnake/ColorSnake_GameFiles/index.html"><a href="ColorSnake/ColorSnake_GameFiles/index.html">Color Snake</a></div>
+    <div class="card" data-url="basketball/BasketBall_GameFiles/index.html"><a href="basketball/BasketBall_GameFiles/index.html">BasketBall (Game Files)</a></div>
+    <div class="card" data-url="basketball/index.html"><a href="basketball/index.html">BasketBall</a></div>
+    <div class="card" data-url="PinBall/PinBall_GameFiles/index.html"><a href="PinBall/PinBall_GameFiles/index.html">PinBall</a></div>
+    <div class="card" data-url="JumpyCar/index.html"><a href="JumpyCar/index.html">Jumpy Car</a></div>
+    <div class="card" data-url="Horror/index.html"><a href="Horror/index.html">Horror</a></div>
+    <div class="card" data-url="ColorJump/ColorJump_GameFiles/index.html"><a href="ColorJump/ColorJump_GameFiles/index.html">Color Jump</a></div>
+    <div class="card" data-url="inlogic-jellyquestmania/gamefiles/index.html"><a href="inlogic-jellyquestmania/gamefiles/index.html">Jelly Quest Mania</a></div>
+    <div class="card" data-url="PittSpike/PittOrSpike_GameFiles/index.html"><a href="PittSpike/PittOrSpike_GameFiles/index.html">Pitt Or Spike</a></div>
+    <div class="card" data-url="NinjaRun/index.html"><a href="NinjaRun/index.html">Ninja Run</a></div>
+    <div class="card" data-url="Mazes/Mazes_GameFiles/index.html"><a href="Mazes/Mazes_GameFiles/index.html">Mazes</a></div>
+    <div class="card" data-url="100Balls/100Balls_GameFiles/index.html"><a href="100Balls/100Balls_GameFiles/index.html">100 Balls</a></div>
+    <div class="card" data-url="Tangram/Tangram_GameFiles/index.html"><a href="Tangram/Tangram_GameFiles/index.html">Tangram</a></div>
+    <div class="card" data-url="ZombieSmack/ZombieSmack_GameFiles/index.html"><a href="ZombieSmack/ZombieSmack_GameFiles/index.html">Zombie Smack</a></div>
+    <div class="card" data-url="FreeFlow/FreeFlow_GameFiles/index.html"><a href="FreeFlow/FreeFlow_GameFiles/index.html">Free Flow</a></div>
+    <div class="card" data-url="inlogic-zumbamania/inlogic-zumbamania/gamefiles/index.html"><a href="inlogic-zumbamania/inlogic-zumbamania/gamefiles/index.html">Zumba Mania</a></div>
+    <div class="card" data-url="JumpUp/JumoUp_GameFiles/index.html"><a href="JumpUp/JumoUp_GameFiles/index.html">Jump Up</a></div>
+    <div class="card" data-url="BasketBall2023/BasketBall_GameFiles/index.html"><a href="BasketBall2023/BasketBall_GameFiles/index.html">BasketBall 2023</a></div>
+  </div>
+
+  <script>
+    async function checkLinks() {
+      const cards = document.querySelectorAll(".card");
+      for (let card of cards) {
+        const url = card.getAttribute("data-url");
+        try {
+          const res = await fetch(url, { method: "HEAD" });
+          if (res.ok) {
+            card.style.display = "block"; // show only if file exists
+          }
+        } catch (e) {
+          console.warn("Missing:", url);
+        }
+      }
+    }
+    checkLinks();
+  </script>
+</body>
+</html>
