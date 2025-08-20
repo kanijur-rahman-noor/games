@@ -1,0 +1,1 @@
+window._CCSettings={platform:"web-mobile",groupList:["default","head","food","wall"],collisionMatrix:[[false],[false,false,true,true],[false,true,false],[false,true,false,false]],hasResourcesBundle:false,hasStartSceneBundle:false,remoteBundles:[],subpackages:[],launchScene:"db://assets/Scene/menu.fire",orientation:"portrait",jsList:[]};
