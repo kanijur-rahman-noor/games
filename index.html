@@ -40,6 +40,13 @@
       display: block;
       margin-top: 5px;
     }
+
+    /* Mobile responsive: 2 columns on screens ≤768px */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
