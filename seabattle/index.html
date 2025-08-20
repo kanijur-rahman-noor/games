@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, initial-scale=1, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<style>
+		body {
+			padding:0px;
+			margin:0px;
+		}
+		#gameArea {
+			position: fixed;
+			display: table;
+		}
+		#imgl2p {
+			display: none;
+			text-align: center;
+			vertical-align: middle;
+			width: 100%;
+			height: 100%;
+		}
+		#imgl2p img{
+			width: 100%;
+		}
+		canvas, #bg, #background{
+			display: block;
+			position:absolute;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<title>SeaBattle</title>
+
+	<link rel="stylesheet" type="text/css" href="lib/add2home.css">
+	<script type="application/javascript" charset="utf-8" src="lib/add2home.js"></script>
+	
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+	<script type="text/javascript" src="createjs/preloadjsmin.js"></script>
+	<script type="text/javascript" src="createjs/easeljsmin.js"></script>
+	<script type="text/javascript" src="createjs/soundjsmin.js"></script>
+
+	<script type="text/javascript" src="config.js"></script>
+	<script type="text/javascript" src="preloader.js"></script>
+</head>
+<body onload="start()">
+<div id="gameArea">
+	<div id="imgl2p"><img src="lib/graphics/p2l.jpg"></div>
+	<div id="background" style="-moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;"></div>
+	<canvas id="gameField" oncontextmenu="return false;"></canvas>
+</div>
+<script type="text/javascript">
+	var activityTime = 0;
+	var po;
+	(function () {
+	  
+	  function getParameterByName(name, url = window.location.href) {
+					name = name.replace(/[\[\]]/g, '\\$&');
+					var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+						results = regex.exec(url);
+					if (!results) return null;
+					if (!results[2]) return '';
+					return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		}
+	  
+		var params = new URLSearchParams(window.location.search);
+		// var msisdn = params.get('msisdn');
+		// var name = params.get('name');
+	  var msisdn = getParameterByName('msisdn');
+		var name = getParameterByName('name');
+		
+		obj = {
+			MobileNumber: msisdn,
+			GameName: name,
+			TimeStamp: 0
+		}
+	
+		setInterval(myTimer, 1000);
+	
+		po = setInterval(postdata, 5000);
+	})();
+	
+	
+	
+	function postdata() {
+		fetch("https://gamestar.shabox.mobi/api/GamePlay/UpdateLeaderBoard", {
+		method: "POST",
+		headers: {
+		 'Accept': 'application/json',
+		 'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(obj)
+		}).then(res => {
+		  obj.TimeStamp = 5;
+		});
+	
+	}
+	
+	function myTimer() {
+		activityTime += 1;
+		 if (activityTime > 30) {
+		if (confirm('Is anyone there? Do you want to play?')) {
+		   activityTime = 0;
+		   clearInterval(po);
+		   po = setInterval(postdata, 5000);
+		} else {
+		   activityTime = 0;
+		   fetch("https://gamestar.shabox.mobi/Home/GameRedirectionLink", {
+		method: "GET",
+		headers: {
+		 'Accept': 'application/json',
+		 'Content-Type': 'application/json'
+		},
+		}).then((response) => response.json())
+	  .then((res) => {
+		  var r = res;
+		 window.location.href = res;
+	  });
+		  
+		}
+		 }
+	   
+	   // console.log(activityTime);
+	}
+	
+	
+	window.addEventListener('load', function () {
+		document.body.addEventListener('touchstart', function (e) {
+			activityTime = 0;
+		}, false)
+	
+	}, false)
+  </script>
+</body>
+</html>
